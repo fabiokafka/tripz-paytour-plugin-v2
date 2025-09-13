@@ -155,6 +155,9 @@ class Tripz_PayTour_Integration {
         register_setting("tripz_paytour_settings", "tripz_paytour_app_secret");
         register_setting("tripz_paytour_settings", "tripz_paytour_api_url");
         register_setting("tripz_paytour_settings", "tripz_paytour_sync_interval");
+
+        // Garante que as tabelas sejam criadas (fallback para ativação)
+        $this->create_tables();
     }
     
     /**
