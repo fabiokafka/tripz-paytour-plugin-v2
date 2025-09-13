@@ -1,0 +1,493 @@
+/**
+ * Estilos do frontend para o plugin Tripz PayTour
+ */
+
+/* Reset e base */
+.tripz-availability-form * {
+    box-sizing: border-box;
+}
+
+/* Container principal */
+.tripz-availability-form {
+    background: #ffffff;
+    border: 1px solid #e1e5e9;
+    border-radius: 12px;
+    padding: 24px;
+    margin: 24px 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    line-height: 1.6;
+}
+
+/* Informações do trip */
+.tripz-trip-info {
+    margin-bottom: 24px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #f8f9fa;
+}
+
+.trip-price,
+.trip-duration,
+.trip-location {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    padding: 8px 0;
+}
+
+.price-label,
+.duration-label,
+.location-label {
+    font-weight: 600;
+    color: #495057;
+    font-size: 14px;
+}
+
+.price-value {
+    font-size: 20px;
+    font-weight: 700;
+    color: #2c5aa0;
+    background: linear-gradient(135deg, #2c5aa0 0%, #1e3f73 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.duration-value,
+.location-value {
+    color: #333;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+/* Formulário */
+.availability-check-form {
+    margin-bottom: 20px;
+}
+
+.availability-check-form .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.availability-check-form .form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.availability-check-form label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+    color: #333;
+    font-size: 14px;
+}
+
+.availability-check-form input,
+.availability-check-form select {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    background: #fff;
+}
+
+.availability-check-form input:focus,
+.availability-check-form select:focus {
+    outline: none;
+    border-color: #2c5aa0;
+    box-shadow: 0 0 0 3px rgba(44, 90, 160, 0.1);
+    transform: translateY(-1px);
+}
+
+.availability-check-form input:hover,
+.availability-check-form select:hover {
+    border-color: #ced4da;
+}
+
+/* Botões */
+.form-actions {
+    text-align: center;
+    margin-top: 24px;
+}
+
+.btn-check-availability {
+    background: linear-gradient(135deg, #2c5aa0 0%, #1e3f73 100%);
+    color: white;
+    border: none;
+    padding: 14px 32px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-check-availability::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.btn-check-availability:hover::before {
+    left: 100%;
+}
+
+.btn-check-availability:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(44, 90, 160, 0.3);
+}
+
+.btn-check-availability:active {
+    transform: translateY(0);
+}
+
+.btn-check-availability:disabled {
+    background: #6c757d;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.btn-check-availability:disabled::before {
+    display: none;
+}
+
+/* Resultados */
+.availability-results {
+    margin-top: 24px;
+    padding: 20px;
+    border-radius: 8px;
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.availability-results.success {
+    background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+    border: 2px solid #b3d7c2;
+    color: #155724;
+}
+
+.availability-results.error {
+    background: linear-gradient(135deg, #f8d7da 0%, #f5c6cb 100%);
+    border: 2px solid #f1b0b7;
+    color: #721c24;
+}
+
+.availability-results h4 {
+    margin: 0 0 16px 0;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+/* Loading */
+.availability-loading {
+    text-align: center;
+    padding: 32px 20px;
+    animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #2c5aa0;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 16px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.loading-text {
+    color: #666;
+    font-style: italic;
+    font-size: 14px;
+}
+
+/* Detalhes de disponibilidade */
+.availability-details {
+    margin-top: 20px;
+}
+
+.availability-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+    margin-bottom: 12px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 8px;
+    border-left: 4px solid #2c5aa0;
+    transition: all 0.3s ease;
+}
+
+.availability-item:hover {
+    transform: translateX(4px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.availability-item .item-info {
+    flex: 1;
+}
+
+.availability-item .item-name {
+    font-weight: 600;
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 4px;
+}
+
+.availability-item .item-description {
+    font-size: 14px;
+    color: #666;
+}
+
+.availability-item .item-details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+}
+
+.availability-item .item-price {
+    font-weight: 700;
+    font-size: 18px;
+    color: #2c5aa0;
+}
+
+.availability-item .item-status {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.availability-item .item-status.available {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.availability-item .item-status.unavailable {
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* Botão de reserva */
+.book-now-button {
+    width: 100%;
+    background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+    color: white;
+    border: none;
+    padding: 16px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    position: relative;
+    overflow: hidden;
+}
+
+.book-now-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.book-now-button:hover::before {
+    left: 100%;
+}
+
+.book-now-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(40, 167, 69, 0.3);
+}
+
+.book-now-button:active {
+    transform: translateY(0);
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    .tripz-availability-form {
+        padding: 20px 16px;
+        margin: 16px 0;
+        border-radius: 8px;
+    }
+    
+    .availability-check-form .form-row {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+    
+    .trip-price,
+    .trip-duration,
+    .trip-location {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+        text-align: left;
+    }
+    
+    .price-value {
+        font-size: 18px;
+    }
+    
+    .availability-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+        text-align: left;
+    }
+    
+    .availability-item .item-details {
+        width: 100%;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .btn-check-availability,
+    .book-now-button {
+        padding: 12px 24px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .tripz-availability-form {
+        padding: 16px 12px;
+    }
+    
+    .availability-check-form input,
+    .availability-check-form select {
+        padding: 10px 12px;
+        font-size: 16px; /* Previne zoom no iOS */
+    }
+    
+    .loading-spinner {
+        width: 32px;
+        height: 32px;
+        border-width: 3px;
+    }
+}
+
+/* Acessibilidade */
+@media (prefers-reduced-motion: reduce) {
+    .tripz-availability-form *,
+    .tripz-availability-form *::before,
+    .tripz-availability-form *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Modo escuro */
+@media (prefers-color-scheme: dark) {
+    .tripz-availability-form {
+        background: #2d3748;
+        border-color: #4a5568;
+        color: #e2e8f0;
+    }
+    
+    .tripz-trip-info {
+        border-bottom-color: #4a5568;
+    }
+    
+    .price-label,
+    .duration-label,
+    .location-label {
+        color: #a0aec0;
+    }
+    
+    .duration-value,
+    .location-value {
+        color: #e2e8f0;
+    }
+    
+    .availability-check-form input,
+    .availability-check-form select {
+        background: #4a5568;
+        border-color: #718096;
+        color: #e2e8f0;
+    }
+    
+    .availability-check-form input:focus,
+    .availability-check-form select:focus {
+        border-color: #63b3ed;
+        box-shadow: 0 0 0 3px rgba(99, 179, 237, 0.1);
+    }
+    
+    .availability-item {
+        background: rgba(74, 85, 104, 0.5);
+    }
+    
+    .availability-item .item-name {
+        color: #e2e8f0;
+    }
+    
+    .availability-item .item-description {
+        color: #a0aec0;
+    }
+}
+
+/* Print styles */
+@media print {
+    .tripz-availability-form {
+        box-shadow: none;
+        border: 1px solid #000;
+    }
+    
+    .btn-check-availability,
+    .book-now-button,
+    .availability-loading {
+        display: none;
+    }
+}
+
